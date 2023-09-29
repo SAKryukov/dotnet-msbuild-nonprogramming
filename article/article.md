@@ -132,7 +132,7 @@ This use of the shared properties and targets is analogous to the definitions fo
 &lt;/Project&gt;
 ```
 
-### Targets 
+### Targets and Parallel Execution
 
 {id=code-directory-build-targets}"Directory.Build.targets":
 
