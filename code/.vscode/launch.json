@@ -4,7 +4,7 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Launch Chrome",
+            "name": "Transcode",
             "preLaunchTask": "Build",
             "runtimeArgs": ["--incognito"],
             "file": "${workspaceFolder}/.vscode/index.html",
