@@ -162,7 +162,7 @@ This use of the shared properties and targets is analogous to the definitions fo
 
 The clause using "@" and "%" is a very interesting and powerful thing, MSBUilt items *transform*. Please see the Microsoft documentation on [MSBuild Transforms](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-transforms) for more information. In this clause, we transform the list of items into a list of commands executing FFmpeg.
 
-Actually, the list of commands is concatenated using different ways of executing FFmpeg in parallel. It works differently in different systems. What is "%26"? This is the character "&". MSBuild does not allow direct use of this character, so it should be [escaped](https://learn.microsoft.com/en-us/visualstudio/msbuild/special-characters-to-escape) with a hexadecimal escape notation. For Linux, "&" between commands means the execution of them in parallel. For Windows, this character is also used, but it means consecutive execution of the commands. For execution in parallel on Windows, each command should be prepended with the command "start", which is defined as the property `Multitasking`.
+The list of commands is concatenated using different ways of executing FFmpeg in parallel. It works differently in different systems. What is "%26"? This is the character "&". MSBuild does not allow direct use of this character, so it should be [escaped](https://learn.microsoft.com/en-us/visualstudio/msbuild/special-characters-to-escape) with a hexadecimal escape notation. For Linux, "&" between commands means the execution of them in parallel. For Windows, this character is also used, but it means consecutive execution of the commands. For execution in parallel on Windows, each command should be prepended with the command "start", which is defined as the property `Multitasking`.
 
 There is another weird property `Continue`. It is defined to show the command in several lines, mostly for clarity and especially for the publication of the present article. It is a different character for Linux and Windows, "\" and "^" correspondently, and "\" is also the character to be escaped. Please see ["Directory.Build.props"](#code-directory-build-props).
 
@@ -209,6 +209,48 @@ First of all, note the use of "**" wildcard. It extends the set of input files t
 In these definitions, many different options are shown. As always, the property defined lower overwrites the properties defined above, so many definitions are redundant. They are placed here for convenience and self-documenting purposes. In this example, the properties `Scale` and `Options` are empty, but they can be changed by placing another property definition below the last line.
 
 In the definition of `Scale`, the format `-vf scale=<width>:<height>` is used, and -1 means that width or height is calculated automatically, to make sure the *aspect ratio* remains the same.
+
+## Using Visual Studio Code
+
+This section is more important for the use of software development, especially with the use of marginal and not-very-popular programming systems. Some of them don’t have any IDE, debugger, build toolchain, and simply offer few command-line tools like compiler, linker, and the like. How to work with them, even without a Visual Studio Code extension?
+
+This is pretty simple. First, add a member `preLaunchTask` to some configuration in "launch.json". This is an example:
+
+"launch.json":
+
+```{lang=Json}
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Transcode",
+            "preLaunchTask": "Build",
+            "runtimeArgs": ["--incognito"],
+            "file": "${workspaceFolder}/.vscode/index.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+
+Here, "Build" is a task in the file "tasks.json":
+
+"tasks.json":
+
+```{lang=Json}
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "Build",
+        "command": "${workspaceFolder}/run.cmd",
+        "type": "shell"
+    }]
+}
+```
+
+This way, the launch configuration "Transcode" will execute our "run.cmd" and then report "MSBuild work is complete". Please see sample ".vscode/*" files for further information.
 
 ## Compatibility and Testing
 
