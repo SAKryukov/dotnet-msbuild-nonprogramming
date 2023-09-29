@@ -2,5 +2,5 @@
 
 Tested on Windows and Linux
 
-## Documentation under development...
+Original publication: MSBuild for Programming and Non-Programming Chores(https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming)
 

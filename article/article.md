@@ -10,7 +10,7 @@ MSBuild is a flexible tool, it can be used not only for Microsoft toolchains, an
 
 The flexibility of MSBuild, as well as its power, is demonstrated on the non-programming task: transcoding any set of media files of different nature using FFmpeg — graphics, audio, media, captions, virtually anything. The solution is highly generalized, so it can be used for many other programming and non-programming tasks. The present article offers the reasons why such an unusual use of MSBuild is recommended.
 
-<!-- https://www.codeproject.com/Articles/? -->
+<!-- https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming -->
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
