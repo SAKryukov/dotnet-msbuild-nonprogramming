@@ -176,7 +176,6 @@ First of all, note the use of "**" wildcard. It extends the set of input files t
 
 ```{lang=XML}
 &lt;Project&gt;
-    &lt;PropertyGroup&gt;&lt;/PropertyGroup&gt;
 
     &lt;PropertyGroup&gt;
         &lt;InputMask&gt;../**/*.png&lt;/InputMask&gt;
