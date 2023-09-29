@@ -14,6 +14,7 @@
             <Commands>@(InputFiles ->
                     '$(Multitasking) $(Tool) -y -i $(Continue)
                     %(Identity) $(Scale)  $(Continue)
+                    $(Options) $(Continue)
                     $(OutputPath)%(Filename).$(OutputFileType)',
                 ' %26 ')
             </Commands>

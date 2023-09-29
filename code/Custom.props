@@ -16,4 +16,8 @@
         <Scale></Scale>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Options>-quality 1</Options>
+    </PropertyGroup>
+
 </Project>
