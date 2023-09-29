@@ -212,7 +212,7 @@ In the definition of `Scale`, the format `-vf scale=<width>:<height>` is used, a
 
 ## Using Visual Studio Code
 
-This section is more important for the use of software development, especially with the use of marginal and not-very-popular programming systems. Some of them don’t have any IDE, debugger, build toolchain, and simply offer few command-line tools like compiler, linker, and the like. How to work with them, even without a Visual Studio Code extension?
+This section is more important for software development use, especially with the use of marginal and not very popular programming systems. Some of them don’t have any IDE, debugger, or build toolchain, and simply offer a few command-line tools like compiler, linker, and the like. How to work with them, even without a Visual Studio Code extension?
 
 This is pretty simple. First, add a member `preLaunchTask` to some configuration in "launch.json". This is an example:
 
