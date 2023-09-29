@@ -71,7 +71,7 @@ It covers most of the basic features of FFmpeg, where we need one-to-one transco
 
 ### Why FFmpeg?
 
-(FFmpeg)[https://en.wikipedia.org/wiki/FFmpeg] is probably the most universal and powerful suite used for the processing of a very wide range of media files. For video, it is probably the most fundamental tool. Many people who think that they don't use FFmpeg actually use it, because it lies in the base of most media editors, generators, and other media software.
+[FFmpeg](https://en.wikipedia.org/wiki/FFmpeg) is probably the most universal and powerful suite used for the processing of a very wide range of media files. For video, it is probably the most fundamental tool. Many people who think that they don't use FFmpeg actually use it, because it lies in the base of most media editors, generators, and other media software.
 
 It is much less true for photography and other visual arts, and a lot more for everything else, especially video.
 
