@@ -1,0 +1,27 @@
+﻿<!--
+    Copyright (C) 2023 by Sergey A Kryukov
+    https://www.SAKryukov.org
+    https://github.com/SAKryukov
+    https://www.codeproject.com/Members/SAKryukov
+-->
+
+<Project>
+
+<Target Name="Transcode">
+
+  <PropertyGroup>
+    <!-- MBSBuild item transform: -->
+    <Commands>@(InputFiles ->
+           '$(Multitasking) $(Tool) -y -i $(Continue)
+            %(Identity) $(Scale)  $(Continue)
+            $(OutputPath)%(Filename).$(OutputFileType)',
+        ' %26 ')
+    </Commands>
+  </PropertyGroup>
+
+  <MakeDir Directories="$(OutputPath)" />
+  <Exec Command="$(Commands)"/>
+
+</Target>
+
+</Project>

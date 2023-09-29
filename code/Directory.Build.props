@@ -1,0 +1,21 @@
+﻿<!--
+    Copyright (C) 2023 by Sergey A Kryukov
+    https://www.SAKryukov.org
+    https://github.com/SAKryukov
+    https://www.codeproject.com/Members/SAKryukov
+-->
+
+<Project>
+    <Import Project="Custom.props"/>
+ 
+  <PropertyGroup>
+    <Tool>ffmpeg</Tool>
+    <!-- modify the path to access ffmpeg: -->
+    <Tool Condition="$(OS.StartsWith('Windows'))">C:/app/Media/ffmpeg/bin/ffmpeg.exe</Tool>
+    <OutputPath>$(ProjectDir)output</OutputPath>
+    <Multitasking Condition="$(OS.StartsWith('Windows'))">start</Multitasking>
+    <Continue>%5C</Continue> <!-- backslash for Linux -->
+    <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
+  </PropertyGroup>
+
+</Project>
