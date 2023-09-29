@@ -144,9 +144,10 @@ This use of the shared properties and targets is analogous to the definitions fo
         &lt;PropertyGroup&gt;
             &lt;!-- MBSBuild item transform: --&gt;
             &lt;Commands&gt;@(InputFiles -&gt;
-                    '$(Multitasking) $(Tool) -y -i $(Continue)
-                    %(Identity) $(Scale) $(Continue)
-                    $(Options) $(Continue)
+                    '$(Multitasking) $(Tool) -y $(Continue)
+                    $(InputOptions) $(Continue)
+                    -i %(Identity) $(Scale) $(Continue)
+                    $(OutputOptions) $(Continue)
                     $(OutputPath)%(Filename).$(OutputFileType)',
                 ' %26 ')
             &lt;/Commands&gt;
@@ -163,6 +164,8 @@ This use of the shared properties and targets is analogous to the definitions fo
 The clause using "@" and "%" is a very interesting and powerful thing, MSBUilt items *transform*. Please see the Microsoft documentation on [MSBuild Transforms](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-transforms) for more information. In this clause, we transform the list of items into a list of commands executing FFmpeg.
 
 The list of commands is concatenated using different ways of executing FFmpeg in parallel. It works differently in different systems. What is "%26"? This is the character "&". MSBuild does not allow direct use of this character, so it should be [escaped](https://learn.microsoft.com/en-us/visualstudio/msbuild/special-characters-to-escape) with a hexadecimal escape notation. For Linux, "&" between commands means the execution of them in parallel. For Windows, this character is also used, but it means consecutive execution of the commands. For execution in parallel on Windows, each command should be prepended with the command "start", which is defined as the property `Multitasking`.
+
+If parallel execution should be turned into a consecutive, for whatever reason, how to do it? For Windows, the value of `$(Multitasking)`, "start", should become an empty string. For Linux, the command delimiter "&" ("%26") should become double, "&". In this case, it can be double for Windows, too.
 
 There is another weird property `Continue`. It is defined to show the command in several lines, mostly for clarity and especially for the publication of the present article. It is a different character for Linux and Windows, "\\" and "^" correspondently, and "\\" is also the character to be escaped. Please see ["Directory.Build.props"](#code-directory-build-props).
 
@@ -189,18 +192,22 @@ First of all, note the use of "**" wildcard. It extends the set of input files t
     &lt;/PropertyGroup&gt;
 
     &lt;PropertyGroup&gt;
-        &lt;Options&gt;-lossless 0&lt;/Options&gt;
-        &lt;Options&gt;-lossless 1&lt;/Options&gt;
-        &lt;Options&gt;-quality 0&lt;/Options&gt;
-        &lt;Options&gt;-quality 100&lt;/Options&gt;
-        &lt;Options&gt;-preset none&lt;/Options&gt;
-        &lt;Options&gt;-preset default&lt;/Options&gt;
-        &lt;Options&gt;-preset picture&lt;/Options&gt;
-        &lt;Options&gt;-preset photo&lt;/Options&gt;
-        &lt;Options&gt;-preset drawing&lt;/Options&gt;
-        &lt;Options&gt;-preset icon&lt;/Options&gt;
-        &lt;Options&gt;-preset text&lt;/Options&gt;
-        &lt;Options&gt;&lt;/Options&gt;
+        &lt;InputOptions&gt;&lt;/InputOptions&gt;
+    &lt;/PropertyGroup&gt;
+
+    &lt;PropertyGroup&gt;
+        &lt;OutputOptions&gt;-lossless 0&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-lossless 1&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-quality 0&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-quality 100&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset none&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset default&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset picture&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset photo&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset drawing&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset icon&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;-preset text&lt;/OutputOptions&gt;
+        &lt;OutputOptions&gt;&lt;/OutputOptions&gt;
     &lt;/PropertyGroup&gt;
 
 &lt;/Project&gt;

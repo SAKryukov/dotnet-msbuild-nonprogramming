@@ -21,18 +21,22 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Options>-lossless 0</Options>
-        <Options>-lossless 1</Options>
-        <Options>-quality 0</Options>
-        <Options>-quality 100</Options>
-        <Options>-preset none</Options>
-        <Options>-preset default</Options>
-        <Options>-preset picture</Options>
-        <Options>-preset photo</Options>
-        <Options>-preset drawing</Options>
-        <Options>-preset icon</Options>
-        <Options>-preset text</Options>
-        <Options></Options>
+        <InputOptions></InputOptions>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <OutputOptions>-lossless 0</OutputOptions>
+        <OutputOptions>-lossless 1</OutputOptions>
+        <OutputOptions>-quality 0</OutputOptions>
+        <OutputOptions>-quality 100</OutputOptions>
+        <OutputOptions>-preset none</OutputOptions>
+        <OutputOptions>-preset default</OutputOptions>
+        <OutputOptions>-preset picture</OutputOptions>
+        <OutputOptions>-preset photo</OutputOptions>
+        <OutputOptions>-preset drawing</OutputOptions>
+        <OutputOptions>-preset icon</OutputOptions>
+        <OutputOptions>-preset text</OutputOptions>
+        <OutputOptions></OutputOptions>
     </PropertyGroup>
 
 </Project>

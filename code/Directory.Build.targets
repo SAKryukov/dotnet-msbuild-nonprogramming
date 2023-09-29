@@ -14,9 +14,10 @@
         <PropertyGroup>
             <!-- MBSBuild item transform: -->
             <Commands>@(InputFiles ->
-                    '$(Multitasking) $(Tool) -y -i $(Continue)
-                    %(Identity) $(Scale)  $(Continue)
-                    $(Options) $(Continue)
+                    '$(Multitasking) $(Tool) -y $(Continue)
+                    $(InputOptions) $(Continue)
+                    -i %(Identity) $(Scale) $(Continue)
+                    $(OutputOptions) $(Continue)
                     $(OutputPath)%(Filename).$(OutputFileType)',
                 ' %26 ')
             </Commands>
