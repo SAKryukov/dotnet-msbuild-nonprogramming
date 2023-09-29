@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "preLaunchTask": "Build",
+            "runtimeArgs": ["--incognito"],
+            "file": "${workspaceFolder}/.vscode/index.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
