@@ -11,13 +11,27 @@
     <PropertyGroup>
         <InputMask>../**/*.png</InputMask>
         <OutputFileType>webp</OutputFileType>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <Scale>-vf scale=256:-1</Scale>
         <Scale>-vf scale=-1:128</Scale>
         <Scale></Scale>
     </PropertyGroup>
 
     <PropertyGroup>
-        <Options>-quality 1</Options>
+        <Options>-lossless 0</Options>
+        <Options>-lossless 1</Options>
+        <Options>-quality 0</Options>
+        <Options>-quality 100</Options>
+        <Options>-preset none</Options>
+        <Options>-preset default</Options>
+        <Options>-preset picture</Options>
+        <Options>-preset photo</Options>
+        <Options>-preset drawing</Options>
+        <Options>-preset icon</Options>
+        <Options>-preset text</Options>
+        <Options></Options>
     </PropertyGroup>
 
 </Project>
