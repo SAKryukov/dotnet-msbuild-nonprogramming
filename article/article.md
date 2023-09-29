@@ -93,9 +93,14 @@ In this particular project, there is only one project file. Moreover, it is neve
 &lt;/Project&gt;
 ```
 
-This is the most generic project. It does not have to be changed, because it simply transparently passes input mask defined elsewhere and generates a set of items. 
+This is the most generic project. It does not have to be changed, because it simply transparently passes input mask defined elsewhere and generates a set of items.
 
 MSBuild concept of [items](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-items) is very powerful. It replaces all those silly iteration loops required by other scripting systems, as well as traversing any directories, recursive or not.
+
+The real set of definitions comes from three common files. One of them, "Custom.props", is specific to the project and type of processing. The other two are applied to all projects in all downstream subdirectories: ["Directory.Build.props"](#code-directory-build-props) and 
+["Directory.Build.targets"](#code-directory-build-targets).
+
+This use of the shared properties and targets is analogous to the definitions for Microsoft toolchains: the common predefined sets of properties and targets come with MSBuild, Visual Studio, and other products. This way, more project files using common definitions, can be added.
 
 ### Properties
 
