@@ -86,9 +86,9 @@ In this particular project, there is only one project file. Moreover, it is neve
 ```{lang=XML}
 &lt;Project Sdk="Microsoft.NET.Sdk"&gt;
 
-&lt;ItemGroup&gt;
-    &lt;InputFiles Include="$(InputMask)"/&gt;
-&lt;/ItemGroup&gt;
+    &lt;ItemGroup&gt;
+        &lt;InputFiles Include="$(InputMask)"/&gt;
+    &lt;/ItemGroup&gt;
 
 &lt;/Project&gt;
 ```
@@ -164,7 +164,7 @@ The clause using "@" and "%" is a very interesting and powerful thing, MSBUilt i
 
 The list of commands is concatenated using different ways of executing FFmpeg in parallel. It works differently in different systems. What is "%26"? This is the character "&". MSBuild does not allow direct use of this character, so it should be [escaped](https://learn.microsoft.com/en-us/visualstudio/msbuild/special-characters-to-escape) with a hexadecimal escape notation. For Linux, "&" between commands means the execution of them in parallel. For Windows, this character is also used, but it means consecutive execution of the commands. For execution in parallel on Windows, each command should be prepended with the command "start", which is defined as the property `Multitasking`.
 
-There is another weird property `Continue`. It is defined to show the command in several lines, mostly for clarity and especially for the publication of the present article. It is a different character for Linux and Windows, "\" and "^" correspondently, and "\" is also the character to be escaped. Please see ["Directory.Build.props"](#code-directory-build-props).
+There is another weird property `Continue`. It is defined to show the command in several lines, mostly for clarity and especially for the publication of the present article. It is a different character for Linux and Windows, "\\" and "^" correspondently, and "\\" is also the character to be escaped. Please see ["Directory.Build.props"](#code-directory-build-props).
 
 The other input information is custom and is defined in a separate file "Custom.props", specific to a particular transcoding task. It supply the items and properties `@(InputFiles)`, $(Options), $(OutputPath) and, $(OutputFileType). So, finally, let's take a look at this file.
 
