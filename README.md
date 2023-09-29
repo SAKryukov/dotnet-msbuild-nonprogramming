@@ -1,7 +1,6 @@
-# dotnet-msbuild-nonprogramming
-Using MSBuild for Programming and Non-Programming Chores
+# Using MSBuild for Programming and Non-Programming Chores
 
 Tested on Windows and Linux
 
-### Documentation under development...
+## Documentation under development...
 
