@@ -8,7 +8,6 @@
 -->
 
 <Project>
-    <PropertyGroup></PropertyGroup>
 
     <PropertyGroup>
         <InputMask>../**/*.png</InputMask>
