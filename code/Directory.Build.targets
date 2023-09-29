@@ -7,21 +7,21 @@
 
 <Project>
 
-<Target Name="Transcode">
+    <Target Name="Transcode">
 
-  <PropertyGroup>
-    <!-- MBSBuild item transform: -->
-    <Commands>@(InputFiles ->
-           '$(Multitasking) $(Tool) -y -i $(Continue)
-            %(Identity) $(Scale)  $(Continue)
-            $(OutputPath)%(Filename).$(OutputFileType)',
-        ' %26 ')
-    </Commands>
-  </PropertyGroup>
+        <PropertyGroup>
+            <!-- MBSBuild item transform: -->
+            <Commands>@(InputFiles ->
+                    '$(Multitasking) $(Tool) -y -i $(Continue)
+                    %(Identity) $(Scale)  $(Continue)
+                    $(OutputPath)%(Filename).$(OutputFileType)',
+                ' %26 ')
+            </Commands>
+        </PropertyGroup>
 
-  <MakeDir Directories="$(OutputPath)" />
-  <Exec Command="$(Commands)"/>
+        <MakeDir Directories="$(OutputPath)" />
+        <Exec Command="$(Commands)"/>
 
-</Target>
+    </Target>
 
 </Project>

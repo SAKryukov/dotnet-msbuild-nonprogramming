@@ -1,4 +1,4 @@
-# Using MSBuild for Programming and Non-Programming Chores
+# MSBuild for Programming and Non-Programming Chores
 
 Tested on Windows and Linux
 

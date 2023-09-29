@@ -7,15 +7,24 @@
 
 <Project>
     <Import Project="Custom.props"/>
- 
-  <PropertyGroup>
-    <Tool>ffmpeg</Tool>
-    <!-- modify the path to access ffmpeg: -->
-    <Tool Condition="$(OS.StartsWith('Windows'))">C:/app/Media/ffmpeg/bin/ffmpeg.exe</Tool>
-    <OutputPath>$(ProjectDir)output</OutputPath>
-    <Multitasking Condition="$(OS.StartsWith('Windows'))">start</Multitasking>
-    <Continue>%5C</Continue> <!-- backslash for Linux -->
-    <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
-  </PropertyGroup>
+
+    <PropertyGroup>
+
+        <OutputPath>$(ProjectDir)output</OutputPath>
+
+        <Tool>ffmpeg</Tool> <!-- Linux -->
+        <!-- For Windows: modify the path to access ffmpeg: -->
+        <Tool
+            Condition="$(OS.StartsWith('Windows'))"
+            >C:/app/Media/ffmpeg/bin/ffmpeg.exe</Tool>
+
+        <Multitasking
+            Condition="$(OS.StartsWith('Windows'))"
+            >start</Multitasking>
+
+        <Continue>%5C</Continue> <!-- backslash for Linux -->
+        <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
+
+    </PropertyGroup>
 
 </Project>

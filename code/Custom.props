@@ -6,13 +6,14 @@
 -->
 
 <Project>
+    <PropertyGroup></PropertyGroup>
 
-  <PropertyGroup>
-    <InputMask>../**/*.png</InputMask>
-    <OutputFileType>webp</OutputFileType>
-    <Scale>-vf scale=256:-1</Scale>
-    <Scale>-vf scale=-1:128</Scale>
-    <Scale></Scale>
-  </PropertyGroup>
+    <PropertyGroup>
+        <InputMask>../**/*.png</InputMask>
+        <OutputFileType>webp</OutputFileType>
+        <Scale>-vf scale=256:-1</Scale>
+        <Scale>-vf scale=-1:128</Scale>
+        <Scale></Scale>
+    </PropertyGroup>
 
 </Project>
