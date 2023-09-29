@@ -3,6 +3,8 @@
     https://www.SAKryukov.org
     https://github.com/SAKryukov
     https://www.codeproject.com/Members/SAKryukov
+    Original publication:
+    https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming
 -->
 
 <Project Sdk="Microsoft.NET.Sdk">
