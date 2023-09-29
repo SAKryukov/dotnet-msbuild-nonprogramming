@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "Launch Chrome",
             "runtimeArgs": ["--incognito", "--enable-precise-memory-info"],
-            "file": "${workspaceFolder}/article0.html",
+            "file": "${workspaceFolder}/article.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

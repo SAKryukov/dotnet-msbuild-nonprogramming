@@ -49,7 +49,7 @@ The first reason is the deployment: I don't know where your MSBuild instance is 
 
 There is another, more subtle reason: with "dotnet msbuild", you can use very convenient .NET API functions in MSBuild property definitions. For a detailed description of this possibility, please see Microsoft documentation on [property functions](https://learn.microsoft.com/en-us/visualstudio/msbuild/property-functions).
 
-{id=paragraph-cross-platform}And of course, one major benefit of executing MSBuild via .NET is that this method is [cross-platform](#heading-cross-platform"). It works on any platform where .NET is installed.
+{id=paragraph-cross-platform}And of course, one major benefit of executing MSBuild via .NET is that this method is [cross-platform](#heading-cross-platform). It works on any platform where .NET is installed.
 
 {id=code-run-cmd}"run.cmd":
 

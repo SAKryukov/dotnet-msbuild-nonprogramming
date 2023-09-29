@@ -1,5 +1,5 @@
 // To detect invalid anchor targets, add:
-//     <script src="prepare/validator.js"></script>
+//     <script src="preparation/validator.js"></script>
 //
 
 window.onload = () => {
