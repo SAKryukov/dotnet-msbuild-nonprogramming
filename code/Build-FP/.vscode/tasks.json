@@ -18,7 +18,7 @@
         },
         {
             "label": "Run Pascal Program",
-            "command": "${workspaceFolder}/output/exe.exe",
+            "command": "${workspaceFolder}/output/application.#1.exe",
             "type": "process",
             "presentation": {
                 "reveal": "always",

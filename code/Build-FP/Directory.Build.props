@@ -9,6 +9,11 @@
 
 <Project>
 
+    <ItemGroup>
+        <UnitPath Include="$(ProjectDir)sample-projects" />
+        <UnitPath Include="$(ProjectDir)sample-projects/shared" />
+    </ItemGroup>
+
     <PropertyGroup>
 
         <InputMask>./**/*.pas</InputMask>
@@ -19,10 +24,17 @@
         <Tool>ffmpeg</Tool> <!-- Linux -->
         <!-- For Windows: modify the path to access ffmpeg: -->
         <Tool>fpc</Tool>
-        <ToolOptions>-MDelphi -FU$(IntermediateOutputPath) -Fu$(IntermediateOutputPath) -Fo$(IntermediateOutputPath) -FE$(OutputPath) -Fe$(ResultFile)</ToolOptions>
 
         <Continue>%5C</Continue> <!-- backslash for Linux -->
         <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
+
+        <ToolOptions>-MDelphi $(Continue)
+	-Fu$(IntermediateOutputPath);@(UnitPath) $(Continue)
+	-FU$(IntermediateOutputPath) $(Continue)
+	-Fo$(IntermediateOutputPath) $(Continue)
+	-FE$(OutputPath) $(Continue)
+	-Fe$(ResultFile) $(Continue)
+        </ToolOptions>
 
     </PropertyGroup>
 
