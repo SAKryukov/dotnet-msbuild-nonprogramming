@@ -63,11 +63,27 @@ This simple command line is designed to be usable for Windows and other systems.
 chmod -x run.cmd
 ```
 
-## Code Sample
+## Two Code Samples
 
-To evaluate the value of MSBuild, I create the code sample used to transcode any media supported by FFmpeg. The goal is to have an arbitrary set of media files located randomly under some directory, uniformly transcode them all, and place them in a single directory. It is done in a customizable manner: the inputs, file types, and transcoding options are placed in one "Custom" file and can be modified by the final user.
+To evaluate the value of MSBuild, I created two generic samples of MSBuild projects:
+
+1. ***Build*** <br>
+    Please see "Build-FP" in source code.
+
+1. ***Transcode***
+    Please see "Transcode-FFmpeg" in source code.
+
+SA???
+
+I create the code sample used to transcode any media supported by FFmpeg. The goal is to have an arbitrary set of media files located randomly under some directory, uniformly transcode them all, and place them in a single directory. It is done in a customizable manner: the inputs, file types, and transcoding options are placed in one "Custom" file and can be modified by the final user.
 
 It covers most of the basic features of FFmpeg, where we need one-to-one transcoding. It does not support very tricky situations with sophisticated mapping between input and output elements, multi-pass processes where each pass should use intermediate files obtained on a previous pass, and so on. However, my code sample can be upgraded with additional project files solving those advanced problems, using the same codebase I provided with the present article.
+
+### Why Free Pascal?
+
+This is just one cross-platform compiler 
+
+SA???
 
 ### Why FFmpeg?
 
@@ -75,13 +91,15 @@ It covers most of the basic features of FFmpeg, where we need one-to-one transco
 
 It is much less true for photography and other visual arts, and a lot more for everything else, especially video.
 
-## Implementation
+## Implementation: Software Build
+
+SA???
 
 ### Project
 
 In this particular project, there is only one project file. Moreover, it is never changed:
 
-"a.project":
+{id=code-project}"a.project":
 
 ```{lang=XML}
 &lt;Project Sdk="Microsoft.NET.Sdk"&gt;
@@ -97,10 +115,26 @@ This is the most generic project. It does not have to be changed, because it sim
 
 MSBuild concept of [items](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-items) is very powerful. It replaces all those silly iteration loops required by other scripting systems, as well as traversing any directories, recursive or not.
 
-The real set of definitions comes from three common files. One of them, "Custom.props", is specific to the project and type of processing. The other two are applied to all projects in all downstream subdirectories: ["Directory.Build.props"](#code-directory-build-props) and 
+The real set of definitions comes from two common files. Those The other two are applied to all projects in all downstream subdirectories: ["Directory.Build.props"](#code-directory-build-props) and 
 ["Directory.Build.targets"](#code-directory-build-targets).
 
 This use of the shared properties and targets is analogous to the definitions for Microsoft toolchains: the common predefined sets of properties and targets come with MSBuild, Visual Studio, and other products. This way, more project files using common definitions, can be added.
+
+### Properties
+
+SA???
+
+### Targets
+
+SA???
+
+## Implementation: Transcode
+
+### Project
+
+No wonder, the project file is exactly the same [the project file for the programming task](#code-project). It depends one one more file, "Custom.props", and it is specific to the required type of media processing. 
+
+SA???
 
 ### Properties
 
@@ -221,28 +255,7 @@ In the definition of `Scale`, the format `-vf scale=<width>:<height>` is used, a
 
 This section is more important for software development use, especially with the use of marginal and not very popular programming systems. Some of them don’t have any IDE, debugger, or build toolchain, and simply offer a few command-line tools like compiler, linker, and the like. How to work with them, even without a Visual Studio Code extension?
 
-This is pretty simple. First, add a member `preLaunchTask` to some configuration in "launch.json". This is an example:
-
-"launch.json":
-
-```{lang=Json}
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Transcode",
-            "preLaunchTask": "Build",
-            "runtimeArgs": ["--incognito"],
-            "file": "${workspaceFolder}/.vscode/index.html",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
-}
-```
-
-Here, "Build" is a task in the file "tasks.json":
+Let's add just one task:
 
 "tasks.json":
 
@@ -250,14 +263,22 @@ Here, "Build" is a task in the file "tasks.json":
 {
     "version": "2.0.0",
     "tasks": [{
-        "label": "Build",
+        "label": "Transcode",
         "command": "${workspaceFolder}/run.cmd",
-        "type": "shell"
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "type": "process",
+        "presentation": {
+            "reveal": "silent",
+        }
+
     }]
 }
 ```
 
-This way, the launch configuration "Transcode" will execute our "run.cmd" and then report "MSBuild work is complete". Please see sample ".vscode/*" files for further information.
+This is a task of the Build type, so it can be executed using the standard Ctrl+Shift+B keyboard shortcut.
 
 ## Compatibility and Testing
 
