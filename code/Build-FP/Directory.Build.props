@@ -1,0 +1,27 @@
+﻿<!--
+    Copyright (C) 2023 by Sergey A Kryukov
+    https://www.SAKryukov.org
+    https://github.com/SAKryukov
+    https://www.codeproject.com/Members/SAKryukov
+    Original publication:
+    https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming
+-->
+
+<Project>
+
+    <PropertyGroup>
+
+        <InputMask>./**/*.pas</InputMask>
+        <OutputPath>$(ProjectDir)output</OutputPath>
+
+        <Tool>ffmpeg</Tool> <!-- Linux -->
+        <!-- For Windows: modify the path to access ffmpeg: -->
+        <Tool>fpc</Tool>
+        <ToolOptions>-MDelphi -Fu$(OutputPath) -Fo$(OutputPath)</ToolOptions>
+
+        <Continue>%5C</Continue> <!-- backslash for Linux -->
+        <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
+
+    </PropertyGroup>
+
+</Project>
