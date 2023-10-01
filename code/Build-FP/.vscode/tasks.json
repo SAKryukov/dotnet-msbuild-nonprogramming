@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "command": "${workspaceFolder}/build.cmd",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "type": "process",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "clear": false
+            }
+        },
+        {
+            "label": "Run Pascal Program",
+            "command": "${workspaceFolder}/output/exe.exe",
+            "type": "process",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "clear": false
+            },
+            "group": {
+                "isDefault": true,
+                "kind": "test",
+            },
+        }
+    ]
+}

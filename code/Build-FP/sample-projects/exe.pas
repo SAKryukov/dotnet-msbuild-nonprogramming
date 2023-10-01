@@ -1,9 +1,8 @@
 program exe;
-uses U, Crt;
+uses U;
 
 begin
     WriteLn('Hello, Free Pascal!');
-    WriteLn('Multiply: ', Multiply(2, 8));
+    WriteLn('Multiply: ', Multiply(3, 8));
     WriteLn('Add: ', Add(13, 56));
-    Write('Press any key... '); Readkey;
 end.

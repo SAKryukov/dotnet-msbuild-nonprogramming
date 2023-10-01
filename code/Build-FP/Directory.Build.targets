@@ -9,6 +9,11 @@
 
 <Project>
 
+    <Target Name="Clear">
+        <RemoveDir
+            Directories="$(IntermediateOutputPath);$(OutputPath)" />
+        </Target>
+
     <Target Name="BuildPascal">
 
         <PropertyGroup>
@@ -16,11 +21,12 @@
             <Commands>
                 @(InputFiles ->
                 '$(Tool) $(ToolOptions) %(Identity)',
-                ' %26 ')
+                ' %26%26 ')
             </Commands>
         </PropertyGroup>
 
         <MakeDir Directories="$(IntermediateOutputPath)" />
+        <Delete Files="$(ResultFile)"/>
         <MakeDir Directories="$(OutputPath)" />
         <Exec Command="$(Commands)"/>
 
