@@ -10,7 +10,7 @@
 <Project>
 
     <PropertyGroup>
-        <InputMask>../**/*.png</InputMask>
+        <InputMask>./**/*.png</InputMask>
         <OutputFileType>webp</OutputFileType>
     </PropertyGroup>
 

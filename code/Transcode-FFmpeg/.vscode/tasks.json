@@ -1,8 +1,16 @@
 {
     "version": "2.0.0",
     "tasks": [{
-        "label": "Build",
+        "label": "Transcode",
         "command": "${workspaceFolder}/run.cmd",
-        "type": "shell"
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "type": "process",
+        "presentation": {
+            "reveal": "silent",
+        }
+
     }]
 }
