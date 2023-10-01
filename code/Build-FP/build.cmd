@@ -1,1 +1,1 @@
-dotnet msbuild a.project -t:Transcode
+dotnet msbuild a.project -t:BuildPascal
