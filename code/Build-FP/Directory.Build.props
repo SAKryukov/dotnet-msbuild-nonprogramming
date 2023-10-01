@@ -12,12 +12,17 @@
     <PropertyGroup>
 
         <InputMask>./**/*.pas</InputMask>
+        <IntermediateOutputPath>$(ProjectDir).intermediateOutput</IntermediateOutputPath>
         <OutputPath>$(ProjectDir)output</OutputPath>
 
         <Tool>ffmpeg</Tool> <!-- Linux -->
         <!-- For Windows: modify the path to access ffmpeg: -->
         <Tool>fpc</Tool>
-        <ToolOptions>-MDelphi -Fu$(OutputPath) -Fo$(OutputPath)</ToolOptions>
+        <ToolOptions>-MDelphi -FU$(IntermediateOutputPath) -Fu$(IntermediateOutputPath) -Fo$(IntermediateOutputPath) -FE$(OutputPath)</ToolOptions>
+
+        <!--
+   
+        -->
 
         <Continue>%5C</Continue> <!-- backslash for Linux -->
         <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>

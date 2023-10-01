@@ -15,11 +15,12 @@
             <!-- MBSBuild item transform: -->
             <Commands>
                 @(InputFiles ->
-                '$(Tool) $(ToolOptions) -FE$(OutputPath) %(Identity)',
+                '$(Tool) $(ToolOptions) %(Identity)',
                 ' %26 ')
             </Commands>
         </PropertyGroup>
 
+        <MakeDir Directories="$(IntermediateOutputPath)" />
         <MakeDir Directories="$(OutputPath)" />
         <Exec Command="$(Commands)"/>
 
