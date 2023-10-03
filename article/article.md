@@ -8,12 +8,14 @@
 
 MSBuild is a flexible tool, it can be used not only for Microsoft toolchains, and it can even be used for non-programming chores
 
-The flexibility of MSBuild, as well as its power, is demonstrated on the non-programming task: transcoding any set of media files of different nature using FFmpeg — graphics, audio, media, captions, virtually anything. The solution is highly generalized, so it can be used for many other programming and non-programming tasks. The present article offers the reasons why such an unusual use of MSBuild is recommended.
+The flexibility of MSBuild, as well as its power, is demonstrated on two projects. One project is the framework for building software using arbitrary toolchain systems, not known to Microsoft software. Another one is a non-programming task: transcoding any set of media files of different nature using FFmpeg — graphics, audio, media, captions, virtually anything. The solutions are highly generalized, so they can be used for many other programming and non-programming tasks. The present article offers the reasons why such an unusual use of MSBuild is recommended.
 
 <!-- https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming -->
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
+
+![Title](title.png){id=image-title}
 
 ## Contents{no-toc}
 
@@ -287,5 +289,7 @@ The solution is supposed to be compatible with all platforms where .NET is insta
 Tested thoroughly on Linux and Windows.
 
 ## Conclusions
+
+The [title image](#image-title) symbolizes the danger of messing with MSBuild without a good understanding of its principles, and the excavator image suggests that the documentation is not that clear, so some digging is required to master it.
 
 The solution works smoothly on different platforms. It is very easy to upgrade to a more complicated solution. It shows the most ins and outs important for the development of a wide range of systems working with different input and output files without a rigid directory structure.
