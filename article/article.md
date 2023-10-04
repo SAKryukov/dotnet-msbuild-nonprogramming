@@ -2,7 +2,9 @@
     enable: false
 }
 
-{title}MSBuild for Programming and Non-Programming Chores
+{title}MSBuild for Programming and Non‑Programming Chores
+
+<!-- Attention! In article the title, the non-breaking hyphen "‑" is used -->
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
@@ -40,6 +42,41 @@ But probably the most important benefit of using MSBuild is the possibility to u
 The sample project provided here is cross-platform. Please see [the explanation of why it is so below](#paragraph-cross-platform).
 
 One note on that: every time the OS "Linux" is mentioned, it actually means "non-Windows". All the elements of the solution designed to work for Linux should also work for any other platform except Windows. For this reason, all the platform-dependent conditions are calculated as `$(OS.StartsWith('Windows')` — I hope it is self-explanatory.
+
+Anyway, as I noticed, there are certain myths circulating around the MSBuild. This is despite the product's long history of use in the Microsoft ecosystem, and even because of this history.
+
+## MSBuild Myths
+
+### MSBuild is not About Visual Studio
+
+Yes, it is bundled with all versions and flavours of Visual Studio. It is also used in all Visual Studio project and solution *templates*. Visual Studio doesn't build anything. It builds everything using MSBuild.
+
+That said, Visual Studio is not required for building projects. It does not require a special tool for batch build --- everything is already done by MSBuild. Strictly speaking, Visual Studio is not required even for software development --- it can be cosidered a mere convenience tool.
+
+It you look at any solution file, ".sln" you can find in first five lines somewhat confusing text:
+
+```{lang=txt}
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+```
+
+Why? I would say, for historical reasons. This file is not even XML and not Json. I hope, this outdated file format will be deprecated sooner or later. Nevertheless, this file is known to MSBuild and also can be used without Visual Studuo.
+
+A commercial Visual Studio license is expensive enough. But all the software tools we need for the development comes free of charge these days.
+
+### MSBuild is not Just for .NET
+
+Yes, it is bundled with cross-platform open-source .NET. You can install .NET and get access to fully-fledged MSBuild. And I would recommend doing so. Yes, the present-day MSBuild is based on .NET as platform. MSBuild is embedded in all [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools) commands.
+
+### MSBuild is an Independent Product
+
+It doesn't depends on other products. Yes, it can be obtained and used separately. How?
+
+### MSBuild is Open Source
+
+Well, it is an open-source product and can be obtained from [the public GitHub repository](https://github.com/dotnet/msbuild).
 
 ## Why .NET?
 
