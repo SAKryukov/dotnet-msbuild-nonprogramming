@@ -1,4 +1,4 @@
-# MSBuild for Programming and Non-Programming Chores
+﻿# MSBuild for Programming and Non‑Programming Chores
 
 Generic .NET MSBuild project demonstrating non-programming use of MSBuild. It runs FFmpeg with different inputs, file types, and options for transcoding media files supported by FFmpeg.
 
