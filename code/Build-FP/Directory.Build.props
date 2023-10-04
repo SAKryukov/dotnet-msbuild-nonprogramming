@@ -28,7 +28,7 @@
         <Continue>%5C</Continue> <!-- backslash for Linux -->
         <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
 
-        <ToolOptions>-MDelphi $(Continue)
+        <ToolOptions>-MDelphiUnicode $(Continue)
 	-Fu$(IntermediateOutputPath);@(UnitPath) $(Continue)
 	-FU$(IntermediateOutputPath) $(Continue)
 	-Fo$(IntermediateOutputPath) $(Continue)
