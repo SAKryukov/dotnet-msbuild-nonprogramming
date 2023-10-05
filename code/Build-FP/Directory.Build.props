@@ -29,7 +29,7 @@
         <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
 
         <ToolOptions>-MDelphiUnicode $(Continue)
-	-Fu$(IntermediateOutputPath);@(UnitPath) $(Continue)
+	-Fu@(UnitPath) $(Continue)
 	-FU$(IntermediateOutputPath) $(Continue)
 	-Fo$(IntermediateOutputPath) $(Continue)
 	-FE$(OutputPath) $(Continue)
