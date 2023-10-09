@@ -1,0 +1,37 @@
+﻿<!--
+    Copyright (C) 2023 by Sergey A Kryukov
+    https://www.SAKryukov.org
+    https://github.com/SAKryukov
+    https://www.codeproject.com/Members/SAKryukov
+    Original publication:
+    https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming
+-->
+
+<Project>
+
+    <ItemGroup>
+        <UnitPath Include="$(ProjectDir)sample-projects" />
+        <UnitPath Include="$(ProjectDir)sample-projects/shared" />
+    </ItemGroup>
+
+    <PropertyGroup>
+
+        <TargetFramework>net7.0</TargetFramework>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+
+        <InputMask>./**/*.pas</InputMask>
+        <IntermediateOutputPath>.intermediateOutput</IntermediateOutputPath>
+        <OutputPath>output</OutputPath>
+        <ResultFile>$(IntermediateOutputPath)/errors.txt</ResultFile>
+
+        <Tool>ffmpeg</Tool> <!-- Linux -->
+        <!-- For Windows: modify the path to access ffmpeg: -->
+        <Tool>fpc</Tool>
+
+        <Continue>%5C</Continue> <!-- backslash for Linux -->
+        <Continue Condition="$(OS.StartsWith('Windows'))">^</Continue>
+
+    </PropertyGroup>
+
+</Project>

@@ -1,0 +1,54 @@
+﻿<!--
+    Copyright (C) 2023 by Sergey A Kryukov
+    https://www.SAKryukov.org
+    https://github.com/SAKryukov
+    https://www.codeproject.com/Members/SAKryukov
+    Original publication:
+    https://www.codeproject.com/Articles/5369187/dotnet-msbuild-nonprogramming
+-->
+
+<Project>
+
+    <Target Name="Clear">
+        <RemoveDir
+            Directories="$(IntermediateOutputPath);$(OutputPath)" />
+        </Target>
+
+    <Target Name="BuildPascal">
+
+        <PropertyGroup>
+            <IntermediateOutputPath>$(MasterDir)/$(IntermediateOutputPath)</IntermediateOutputPath>
+            <OutputPath>$(MasterDir)/$(OutputPath)</OutputPath>
+            <ToolOptions>-MDelphiUnicode $(Continue)
+                -Fu@(UnitPath) $(Continue)
+	    -FU$(IntermediateOutputPath) $(Continue)
+	    -Fo$(IntermediateOutputPath) $(Continue)
+	    -FE$(OutputPath) $(Continue)
+	    -Fe$(ResultFile) -va $(Continue)
+            </ToolOptions>
+        </PropertyGroup>
+
+        <PropertyGroup>
+            <!-- MBSBuild item transform: -->
+            <Commands>
+                @(InputFiles ->
+                '$(Tool) $(ToolOptions) %(Identity)',
+                ' %26%26 ')
+            </Commands>
+        </PropertyGroup>
+
+        <MakeDir Directories="$(IntermediateOutputPath)" />
+        <Delete Files="$(ResultFile)"/>
+        <MakeDir Directories="$(OutputPath)" />
+        <Exec Command="echo master: $(MasterDir)"/>
+        <Exec Command="echo out: $(OutputPath)"/>
+        <Exec Command="$(Commands)"/>
+
+    </Target>
+
+    <Target Name="Build">
+        <MSBuild Projects="@(Projects)" Targets="BuildPascal" BuildInParallel="true" Properties="MasterDir=$([System.IO.Path]::GetDirectoryName($(ProjectPath)))"/>
+    </Target>
+ 
+
+</Project>
