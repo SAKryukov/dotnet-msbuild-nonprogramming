@@ -1,1 +1,1 @@
-dotnet msbuild a.project -t:Clear
+dotnet msbuild Solution.master -t:Clear

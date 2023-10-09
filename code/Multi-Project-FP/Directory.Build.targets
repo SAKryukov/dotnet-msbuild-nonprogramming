@@ -17,14 +17,19 @@
     <Target Name="BuildPascal">
 
         <PropertyGroup>
-            <IntermediateOutputPath>$(MasterDir)/$(IntermediateOutputPath)</IntermediateOutputPath>
-            <OutputPath>$(MasterDir)/$(OutputPath)</OutputPath>
+            <_ownDir>$([System.IO.Path]::GetDirectoryName($(ProjectPath)))</_ownDir>
+            <_relativePath>$([System.IO.Path]::GetRelativePath($(MasterDir), $(_ownDir)))</_relativePath>
+            <_projectName>$([System.IO.Path]::GetFileName($(ProjectPath)))</_projectName>
+
+            <_intermediateOutputPath>$([System.IO.Path]::Combine($(MasterDir),$(IntermediateOutputPath), $(_relativePath), $(_projectName)))</_intermediateOutputPath>
+            <_outputPath>$([System.IO.Path]::Combine($(MasterDir),$(OutputPath), $(_relativePath), $(_projectName)))</_outputPath>
+            <_resultFile>$([System.IO.Path]::Combine($(MasterDir),$(IntermediateOutputPath), $(_relativePath), $(_projectName), $(ResultFile)))</_resultFile>
             <ToolOptions>-MDelphiUnicode $(Continue)
                 -Fu@(UnitPath) $(Continue)
-	    -FU$(IntermediateOutputPath) $(Continue)
-	    -Fo$(IntermediateOutputPath) $(Continue)
-	    -FE$(OutputPath) $(Continue)
-	    -Fe$(ResultFile) -va $(Continue)
+	    -FU$(_intermediateOutputPath) $(Continue)
+	    -Fo$(_intermediateOutputPath) $(Continue)
+	    -FE$(_outputPath) $(Continue)
+	    -Fe$(_resultFile) $(Continue)
             </ToolOptions>
         </PropertyGroup>
 
@@ -37,11 +42,9 @@
             </Commands>
         </PropertyGroup>
 
-        <MakeDir Directories="$(IntermediateOutputPath)" />
+        <MakeDir Directories="$(_intermediateOutputPath)" />
         <Delete Files="$(ResultFile)"/>
-        <MakeDir Directories="$(OutputPath)" />
-        <Exec Command="echo master: $(MasterDir)"/>
-        <Exec Command="echo out: $(OutputPath)"/>
+        <MakeDir Directories="$(_outputPath)" />
         <Exec Command="$(Commands)"/>
 
     </Target>
@@ -50,5 +53,4 @@
         <MSBuild Projects="@(Projects)" Targets="BuildPascal" BuildInParallel="true" Properties="MasterDir=$([System.IO.Path]::GetDirectoryName($(ProjectPath)))"/>
     </Target>
  
-
 </Project>

@@ -30,7 +30,7 @@
         },
         {
             "label": "Run Pascal Program",
-            "command": "${workspaceFolder}/output/application.#1.exe",
+            "command": "${workspaceFolder}/output/project.First/a.project/Application.#1.exe",
             "type": "process",
             "presentation": {
                 "reveal": "always",
@@ -40,8 +40,8 @@
             },
             "group": {
                 "isDefault": true,
-                "kind": "test",
-            },
+                "kind": "test"
+            }
         }
     ]
 }
