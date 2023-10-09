@@ -12,7 +12,8 @@
     <PropertyGroup>
 
         <TargetFramework>net7.0</TargetFramework>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendTargetFrameworkToOutputPath>
+	false</AppendTargetFrameworkToOutputPath>
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 
         <InputMask>./**/*.pas</InputMask>

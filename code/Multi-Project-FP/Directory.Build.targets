@@ -10,26 +10,41 @@
 <Project>
 
     <Target Name="Clear">
-        <RemoveDir
-            Directories="$(IntermediateOutputPath);$(OutputPath)" />
-        </Target>
+        <RemoveDir Directories="$(IntermediateOutputPath);$(OutputPath)" />
+    </Target>
 
     <Target Name="BuildPascal">
 
         <PropertyGroup>
-            <_ownDir>$([System.IO.Path]::GetDirectoryName($(ProjectPath)))</_ownDir>
-            <_relativePath>$([System.IO.Path]::GetRelativePath($(MasterDir), $(_ownDir)))</_relativePath>
-            <_projectName>$([System.IO.Path]::GetFileName($(ProjectPath)))</_projectName>
+            <_ownDir>$([System.IO.Path]::GetDirectoryName(
+                $(ProjectPath)))</_ownDir>
+            <_relativePath>$([System.IO.Path]::GetRelativePath(
+                $(MasterDir), $(_ownDir)))</_relativePath>
+            <_projectName>$([System.IO.Path]::GetFileName(
+                $(ProjectPath)))</_projectName>
 
-            <_intermediateOutputPath>$([System.IO.Path]::Combine($(MasterDir),$(IntermediateOutputPath), $(_relativePath), $(_projectName)))</_intermediateOutputPath>
-            <_outputPath>$([System.IO.Path]::Combine($(MasterDir),$(OutputPath), $(_relativePath), $(_projectName)))</_outputPath>
-            <_resultFile>$([System.IO.Path]::Combine($(MasterDir),$(IntermediateOutputPath), $(_relativePath), $(_projectName), $(ResultFile)))</_resultFile>
+            <_intermediateOutputPath>$([System.IO.Path]::Combine(
+                $(MasterDir),
+                $(IntermediateOutputPath),
+                $(_relativePath),
+                $(_projectName)))</_intermediateOutputPath>
+            <_outputPath>$([System.IO.Path]::Combine(
+                $(MasterDir),
+                $(OutputPath),
+                $(_relativePath),
+                $(_projectName)))</_outputPath>
+            <_resultFile>$([System.IO.Path]::Combine(
+                $(MasterDir),
+                $(IntermediateOutputPath),
+                $(_relativePath),
+                $(_projectName),
+                $(ResultFile)))</_resultFile>
             <ToolOptions>-MDelphiUnicode $(Continue)
                 -Fu@(UnitPath) $(Continue)
-	    -FU$(_intermediateOutputPath) $(Continue)
-	    -Fo$(_intermediateOutputPath) $(Continue)
-	    -FE$(_outputPath) $(Continue)
-	    -Fe$(_resultFile) $(Continue)
+	            -FU$(_intermediateOutputPath) $(Continue)
+	            -Fo$(_intermediateOutputPath) $(Continue)
+	            -FE$(_outputPath) $(Continue)
+	            -Fe$(_resultFile) $(Continue)
             </ToolOptions>
         </PropertyGroup>
 
@@ -50,7 +65,12 @@
     </Target>
 
     <Target Name="Build">
-        <MSBuild Projects="@(Projects)" Targets="BuildPascal" BuildInParallel="true" Properties="MasterDir=$([System.IO.Path]::GetDirectoryName($(ProjectPath)))"/>
+        <MSBuild
+            Projects="@(Projects)"
+            Targets="BuildPascal"
+            BuildInParallel="true"
+            Properties="MasterDir=$([System.IO.Path]::GetDirectoryName(
+                $(ProjectPath)))"/>
     </Target>
- 
+
 </Project>
