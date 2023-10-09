@@ -53,9 +53,15 @@
             <Commands>
                 @(InputFiles ->
                 '$(Tool) $(ToolOptions) %(Identity)',
-                ' %26%26 ')
+                ' %26 ')
             </Commands>
         </PropertyGroup>
+
+        <MSBuild
+            Projects="@(References)"
+            Targets="BuildPascal"
+            BuildInParallel="true"
+            Properties="MasterDir=$(MasterDir)"/>
 
         <MakeDir Directories="$(_intermediateOutputPath)" />
         <Delete Files="$(ResultFile)"/>
