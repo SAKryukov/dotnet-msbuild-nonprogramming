@@ -102,35 +102,37 @@ This simple command line is designed to be usable for Windows and other systems.
 chmod -x run.cmd
 ```
 
-## Two Code Samples
+## Three Solution Samples
 
-To evaluate the value of MSBuild, I created two generic samples of MSBuild projects:
+To evaluate the value of MSBuild, I created three generic samples of MSBuild projects.
 
-1. ***Build*** <br>
-    Please see "Build-FP" in source code.
+First two solutions demonstrate how to use some compilers unknown to the Microsoft software and use them through MSBuild. For the samples, I've chosen to use Free Pascal. Why Free Pascal? I'll try to explain it [below](#heading-why-free-pascal3f).
 
+The third solution demonstrates the MSBuild use for some non-programming chores. This code sample is used to transcode any media supported by FFmpeg. Why FFmpeg? I'll try to explain it [below](#heading-why-ffmpeg3f), too.
+
+1. ***Software Build*** </br>
+    Please see "code/Build-FP" in source code and [the description](#heading-software-build) below.
+
+1. ***Multi-Project Software Build*** <br>
+    Please see "code/Multi-Project-FP" in source code and [the description](#heading-multu-project-software-build) below.
+    
 1. ***Transcode***
-    Please see "Transcode-FFmpeg" in source code.
-
+    This project automates the selection of input files and processing options. It finds the input files in different formats and arbitrary locations and transcode them into the same format using identical options and the same output format. All the data used to specify inputs, outputs, and options is defined in a single custom file.
+    Please see "code/Transcode-FFmpeg" in source code and [the description](#heading-non-programming3a-transcode) below.
+    
 SA???
 
-I create the code sample used to transcode any media supported by FFmpeg. The goal is to have an arbitrary set of media files located randomly under some directory, uniformly transcode them all, and place them in a single directory. It is done in a customizable manner: the inputs, file types, and transcoding options are placed in one "Custom" file and can be modified by the final user.
+ The goal is to have an arbitrary set of media files located randomly under some directory, uniformly transcode them all, and place them in a single directory. It is done in a customizable manner: the inputs, file types, and transcoding options are placed in one "Custom" file and can be modified by the final user.
 
 It covers most of the basic features of FFmpeg, where we need one-to-one transcoding. It does not support very tricky situations with sophisticated mapping between input and output elements, multi-pass processes where each pass should use intermediate files obtained on a previous pass, and so on. However, my code sample can be upgraded with additional project files solving those advanced problems, using the same codebase I provided with the present article.
+
+## Software Build
+
+SA???
 
 ### Why Free Pascal?
 
 This is just one cross-platform compiler 
-
-SA???
-
-### Why FFmpeg?
-
-[FFmpeg](https://en.wikipedia.org/wiki/FFmpeg) is probably the most universal and powerful suite used for the processing of a very wide range of media files. For video, it is probably the most fundamental tool. Many people who think that they don't use FFmpeg actually use it, because it lies in the base of most media editors, generators, and other media software.
-
-It is much less true for photography and other visual arts, and a lot more for everything else, especially video.
-
-## Implementation: Software Build
 
 SA???
 
@@ -167,7 +169,19 @@ SA???
 
 SA???
 
-## Implementation: Transcode
+## Multu-Project Software Build
+
+### Master Project
+
+### Parallel Execution
+
+## Non-Programming: Transcode
+
+### Why FFmpeg?
+
+[FFmpeg](https://en.wikipedia.org/wiki/FFmpeg) is probably the most universal and powerful suite used for the processing of a very wide range of media files. For video, it is probably the most fundamental tool. Many people who think that they don't use FFmpeg actually use it, because it lies in the base of most media editors, generators, and other media software.
+
+It is much less true for photography and other visual arts, and a lot more for everything else, especially video.
 
 ### Project
 
@@ -290,7 +304,7 @@ In these definitions, many different options are shown. As always, the property 
 
 In the definition of `Scale`, the format `-vf scale=<width>:<height>` is used, and -1 means that width or height is calculated automatically, to make sure the *aspect ratio* remains the same.
 
-## Using Visual Studio Code
+### Using Visual Studio Code
 
 This section is more important for software development use, especially with the use of marginal and not very popular programming systems. Some of them don’t have any IDE, debugger, or build toolchain, and simply offer a few command-line tools like compiler, linker, and the like. How to work with them, even without a Visual Studio Code extension?
 
