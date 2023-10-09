@@ -21,7 +21,7 @@
             <Commands>
                 @(InputFiles ->
                 '$(Tool) $(ToolOptions) %(Identity)',
-                ' %26%26 ')
+                ' %26 ')
             </Commands>
         </PropertyGroup>
 

@@ -16,6 +16,7 @@
 
     <ItemGroup>
         <InputFiles Include="$(InputMask)"/>
+        <References Include="../project.Second/a.project"/>
     </ItemGroup>
 
 </Project>
