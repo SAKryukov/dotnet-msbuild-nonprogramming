@@ -30,9 +30,7 @@
                 $(_projectName)))</_intermediateOutputPath>
             <_outputPath>$([System.IO.Path]::Combine(
                 $(MasterDir),
-                $(OutputPath),
-                $(_relativePath),
-                $(_projectName)))</_outputPath>
+                $(OutputPath)))</_outputPath>
             <_resultFile>$([System.IO.Path]::Combine(
                 $(MasterDir),
                 $(IntermediateOutputPath),

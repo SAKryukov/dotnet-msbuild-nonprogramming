@@ -11,12 +11,11 @@
 
     <ItemGroup>
         <UnitPath Include="$(ProjectDir)sample-projects" />
-        <UnitPath Include="$(ProjectDir)../project.Shared" />
+        <UnitPath Include="$(ProjectDir)sample-projects/shared" />
     </ItemGroup>
 
     <ItemGroup>
         <InputFiles Include="$(InputMask)"/>
-        <References Include="../project.Shared/a.project"/>
     </ItemGroup>
 
 </Project>
