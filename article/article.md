@@ -171,9 +171,83 @@ SA???
 
 ## Multu-Project Software Build
 
+SA???
+
 ### Master Project
 
+SA???
+
+### Properties
+
+SA???
+
+### Targets
+
+SA???
+
 ### Parallel Execution
+
+SA???
+
+### Project Dependencies
+
+SA???
+
+### Build Result
+
+Now, we have what we wanted. This is the structure of "Multi-Project-FP/.intermediateOutput":
+
+![intermediateOutput](internediate-output.png)
+
+It matches the structure of the source code, and also it includes additional sub-directories "a.project", matching the names of the project files. I intentionally created a pathological case when the simple names of all three project files are identical. It is done to illustrate that the suggested project structure could withstand all the situations, no matter how project and source files are named. Let's take a look at the files in the directories, to see that the units, libraries and object files have the same names, but the files are isolated, so the clash is not possible. It also covers the situations when the project files have different names but are grouped in the same directory.
+
+This is the list of all files in the "Multi-Project-FP/.intermediateOutput/**/" directories:
+
+"Multi-Project-FP/.intermediateOutput/project.First/a.project":
+
+```{lang=text}
+libimpU.a
+Application.#1.o
+Application.#2.o
+U.o
+U.ppu
+errors.txt
+```
+"Multi-Project-FP/.intermediateOutput/project.Second/a.project":
+
+```{lang=text}
+libimpU.a
+Application.#3.o
+Application.#4.o
+U.o
+U.ppu
+errors.txt
+```
+
+"Multi-Project-FP/.intermediateOutput/project.Shared/a.project":
+
+```{lang=text}
+lib.o
+errors.txt
+```
+
+In contrast to the structure of intermediate files, the final output files are only executable files, and they are collected in a single directory:
+
+"Multi-Project-FP/output":
+
+```{lang=text}
+lib.dll{lang=text}
+Application.#1.exe
+Application.#2.exe
+Application.#3.exe
+Application.#4.exe
+```
+
+If we put them in separate directories, it would not always work. In our examples, the "*.exe" files depend on "lib.dll", so 
+
+Now, let's remember that we decided to name all source files corresponding to executable files "*.pas", and use this naming schema to tell the MSBuild projects to build only these files, while all other source files, named "*.pp", are compiled automatically, because, some "*.pas" depend on them.
+
+Therefore, we still need some requirements for the file names: all "*.pas" file should get unique names, otherwise they some files would overwrite others. However, if this rule is broken by mistake, it cannot break the build. In our example, we would just get less "Application.??.exe" application files then we wanted, but they will build and will be operational. The reason for this issue would be quite obvious and easy to fix.
 
 ## Non-Programming: Transcode
 
