@@ -21,8 +21,6 @@
         <OutputPath>$(ProjectDir)output</OutputPath>
         <ResultFile>$(IntermediateOutputPath)/errors.txt</ResultFile>
 
-        <Tool>ffmpeg</Tool> <!-- Linux -->
-        <!-- For Windows: modify the path to access ffmpeg: -->
         <Tool>fpc</Tool>
 
         <Continue>%5C</Continue> <!-- backslash for Linux -->

@@ -59,12 +59,12 @@
             Projects="@(References)"
             Targets="BuildPascal"
             BuildInParallel="true"
-            Properties="MasterDir=$(MasterDir)"/>
+            Properties="MasterDir=$(MasterDir)" />
 
         <MakeDir Directories="$(_intermediateOutputPath)" />
-        <Delete Files="$(ResultFile)"/>
+        <Delete Files="$(ResultFile)" />
         <MakeDir Directories="$(_outputPath)" />
-        <Exec Command="$(Commands)"/>
+        <Exec Command="$(Commands)" />
 
     </Target>
 
@@ -74,7 +74,7 @@
             Targets="BuildPascal"
             BuildInParallel="true"
             Properties="MasterDir=$([System.IO.Path]::GetDirectoryName(
-                $(ProjectPath)))"/>
+                $(ProjectPath)))" />
     </Target>
 
 </Project>

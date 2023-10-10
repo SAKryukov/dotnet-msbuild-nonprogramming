@@ -24,8 +24,10 @@
         </PropertyGroup>
 
         <MakeDir Directories="$(OutputPath)" />
-        <Exec Command="$(Commands)"  Condition=" '@(InputFiles)' != '' "/>
-        <Warning File="Input" Text="No input files found. Make sure some input files $(InputMask) are available. The path is relative to the directory of the project" Condition=" '@(InputFiles)' == '' "/>
+        <Exec Command="$(Commands)"  Condition=" '@(InputFiles)' != '' " />
+        <Warning File="Input"
+            Text="No input files found. Make sure some input files $(InputMask) are available. The path is relative to the directory of the project"
+            Condition=" '@(InputFiles)' == '' " />
 
     </Target>
 

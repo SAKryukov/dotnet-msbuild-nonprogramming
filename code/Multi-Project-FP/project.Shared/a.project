@@ -10,12 +10,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <UnitPath Include="$(ProjectDir)sample-projects" />
-        <UnitPath Include="$(ProjectDir)sample-projects/shared" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InputFiles Include="$(InputMask)"/>
+        <InputFiles Include="$(InputMask)" />
     </ItemGroup>
 
 </Project>

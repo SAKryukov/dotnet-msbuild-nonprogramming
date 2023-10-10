@@ -26,9 +26,9 @@
         </PropertyGroup>
 
         <MakeDir Directories="$(IntermediateOutputPath)" />
-        <Delete Files="$(ResultFile)"/>
+        <Delete Files="$(ResultFile)" />
         <MakeDir Directories="$(OutputPath)" />
-        <Exec Command="$(Commands)"/>
+        <Exec Command="$(Commands)" />
 
     </Target>
 

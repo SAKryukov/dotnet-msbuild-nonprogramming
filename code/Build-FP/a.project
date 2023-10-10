@@ -10,7 +10,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <InputFiles Include="$(InputMask)"/>
+        <InputFiles Include="$(InputMask)" />
     </ItemGroup>
 
 </Project>
